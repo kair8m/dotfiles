@@ -16,10 +16,12 @@ configuration files for different tools
 
 `Ctrl + f` toggle fzf dialogue
 
+###NERD TREE guides
 
-NERD TREE guides
 `m` - open dialogue
 
 in dialogue
+
 `a` - create file or directory
+
 `d` - delete file or directory
