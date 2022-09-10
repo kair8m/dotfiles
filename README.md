@@ -2,6 +2,13 @@
 
 configuration files for different tools
 
+# required tools
+```
+https://github.com/Yggdroot/indentLine
+https://github.com/zsh-users/zsh-syntax-highlighting
+https://github.com/tpope/vim-commentary
+```
+
 # Keyboard shortcuts
 
 ## vim
