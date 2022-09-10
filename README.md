@@ -1,9 +1,10 @@
 # dotfiles
+
 configuration files for different tools
 
-* Shortcuts *
+# Keyboard shortcuts
 
-# vim
+## vim
 
 `:Files` toggle fzf dialogue
 
