@@ -8,10 +8,13 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chriskempson/base16-vim'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -49,6 +52,8 @@ function s:remove_pair() abort
 endfunction
 
 inoremap " ""<c-g>U<left>
+map <C-n> :NERDTreeToggle<CR>
+map <C-f> :Files<CR>
 highlight link LspErrorText GruvboxRedSign " requires gruvbox
 highlight clear LspWarningLine
 let g:lsp_signs_enabled = 1         " enable signs
@@ -73,3 +78,5 @@ let g:markdown_fenced_languages = [
 			\ 'vim',
 			\ 'help'
 			\]
+let g:fzf_preview_window = 'right:50%'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
