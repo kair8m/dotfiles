@@ -6,9 +6,13 @@ configuration files for different tools
 # vim
 
 `:Files` toggle fzf dialogue
+
 `gcc` - comment line
+
 `gc` - uncomment line
+
 `Ctrl + n` - toggle nerd tree
+
 `Ctrl + f` toggle fzf dialogue
 
 
