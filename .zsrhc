@@ -3,9 +3,11 @@ ZSH_THEME="crunch"
 plugins=(
 	git
 	zsh-autosuggestions
+	zsh-syntax-highlighting
 )
 
 export PATH="/usr/local/opt/python@3.10/libexec/bin:$PATH"
+export EDITOR=vim
 alias py=python
 alias sc"=source ~/.zshrc"
 alias top=vtop
