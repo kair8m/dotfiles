@@ -13,15 +13,15 @@ https://github.com/tpope/vim-commentary
 
 ## vim
 
-`:Files` toggle fzf dialogue
-
 `gcc` - comment line
 
 `gc` - uncomment line
 
 `Ctrl + n` - toggle nerd tree
 
-`Ctrl + f` toggle fzf dialogue
+`Ctrl + p` find file in project
+
+`Ctrl + f` find using content in project
 
 ###NERD TREE guides
 
