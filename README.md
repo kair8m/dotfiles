@@ -13,7 +13,7 @@ https://github.com/tpope/vim-commentary
 
 ## vim
 
-`gq` - format file
+`gq` - format selection
 
 `gcc` - comment line
 
