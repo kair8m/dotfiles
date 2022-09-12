@@ -32,6 +32,7 @@ set paste
 set cursorline
 set termguicolors
 set nocompatible
+set updatetime=300
 syntax on
 filetype plugin indent on
 
@@ -92,4 +93,6 @@ let g:fzf_preview_window = 'right:50%'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
 let g:molokai_original = 1
 let g:rehash256 = 1
+let g:gitgutter_highlight_lines = 1
+let g:gitgutter_async=0
 au FileType cpp setlocal formatexpr= formatprg=clang-format\ -style=file
