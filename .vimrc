@@ -60,9 +60,10 @@ endfunction
 command! ProjectFiles execute 'Files' s:find_git_root()
 command! -bang -nargs=* SearchInProject
   \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
+command! NerdTreeProjectRoot execute 'NERDTreeToggle' s:find_git_root()
 
 inoremap " ""<c-g>U<left>
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NerdTreeProjectRoot<CR>
 map <C-p> :ProjectFiles<CR>
 map <C-f> :SearchInProject<CR>
 highlight link LspErrorText GruvboxRedSign " requires gruvbox
