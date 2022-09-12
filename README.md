@@ -13,6 +13,8 @@ https://github.com/tpope/vim-commentary
 
 ## vim
 
+`gq` - format file
+
 `gcc` - comment line
 
 `gc` - uncomment line
