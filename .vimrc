@@ -15,6 +15,7 @@ Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tomasr/molokai'
 
 call plug#end()
 
@@ -34,7 +35,7 @@ set nocompatible
 syntax on
 filetype indent on
 
-colorscheme gruvbox
+colorscheme molokai
 
 inoremap { {}<Esc>ha
 inoremap ( ()<Esc>ha
@@ -51,9 +52,18 @@ function s:remove_pair() abort
 	return stridx('""''''()[]<>{}', pair) % 2 == 0 ? "\<del>\<c-h>" : "\<bs>"
 endfunction
 
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+command! -bang -nargs=* SearchInProject
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
+
 inoremap " ""<c-g>U<left>
 map <C-n> :NERDTreeToggle<CR>
-map <C-f> :Files<CR>
+map <C-p> :ProjectFiles<CR>
+map <C-f> :SearchInProject<CR>
 highlight link LspErrorText GruvboxRedSign " requires gruvbox
 highlight clear LspWarningLine
 let g:lsp_signs_enabled = 1         " enable signs
@@ -80,3 +90,5 @@ let g:markdown_fenced_languages = [
 			\]
 let g:fzf_preview_window = 'right:50%'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
+let g:molokai_original = 1
+let g:rehash256 = 1
