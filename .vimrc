@@ -33,7 +33,7 @@ set cursorline
 set termguicolors
 set nocompatible
 syntax on
-filetype indent on
+filetype plugin indent on
 
 colorscheme molokai
 
@@ -92,3 +92,4 @@ let g:fzf_preview_window = 'right:50%'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
 let g:molokai_original = 1
 let g:rehash256 = 1
+au FileType cpp setlocal formatexpr= formatprg=clang-format\ -style=file
