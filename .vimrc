@@ -34,6 +34,8 @@ set termguicolors
 set nocompatible
 set updatetime=300
 set smartindent
+set nowrap
+set is hls
 syntax on
 filetype plugin indent on
 
@@ -67,6 +69,7 @@ inoremap " ""<c-g>U<left>
 map <C-n> :NerdTreeProjectRoot<CR>
 map <C-p> :ProjectFiles<CR>
 map <C-f> :SearchInProject<CR>
+map <esc> :noh <CR>
 highlight link LspErrorText GruvboxRedSign " requires gruvbox
 highlight clear LspWarningLine
 let g:lsp_signs_enabled = 1         " enable signs
