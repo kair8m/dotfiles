@@ -33,6 +33,7 @@ set cursorline
 set termguicolors
 set nocompatible
 set updatetime=300
+set smartindent
 syntax on
 filetype plugin indent on
 
@@ -97,3 +98,4 @@ let g:rehash256 = 1
 let g:gitgutter_highlight_lines = 1
 let g:gitgutter_async=0
 au FileType cpp setlocal formatexpr= formatprg=clang-format\ -style=file
+au FileType python setlocal formatprg=autopep8\ -
