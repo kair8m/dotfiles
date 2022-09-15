@@ -36,6 +36,9 @@ set updatetime=300
 set smartindent
 set nowrap
 set is hls
+set clipboard=unnamedplus
+set mouse
+set title
 syntax on
 filetype plugin indent on
 
