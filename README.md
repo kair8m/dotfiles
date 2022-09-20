@@ -8,6 +8,7 @@ https://github.com/Yggdroot/indentLine
 https://github.com/zsh-users/zsh-syntax-highlighting
 https://github.com/tpope/vim-commentary
 https://github.com/airblade/vim-gitgutter
+https://sdkman.io/
 ```
 
 # Keyboard shortcuts
