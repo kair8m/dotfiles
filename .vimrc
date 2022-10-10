@@ -40,6 +40,7 @@ set clipboard=unnamedplus
 set mouse
 set title
 syntax on
+filetype indent on
 filetype plugin indent on
 
 colorscheme molokai
