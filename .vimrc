@@ -18,6 +18,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'rakr/vim-one'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tpope/vim-commentary'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
