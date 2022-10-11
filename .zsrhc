@@ -10,6 +10,8 @@ plugins=(
 	git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+	web-search
+	auto-notify
 )
 
 export EDITOR=nvim
@@ -28,8 +30,10 @@ alias pack="tar -czvf"
 
 source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:$GOPATH/bin"
-# For macbook. Remap the '~' key to it's proper position
-hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}' > /dev/null
+
+if [[ $OSTYPE == 'darwin'* ]]; then
+	hidutil property --set 	'{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}' > /dev/null
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -59,6 +63,10 @@ export SDKMAN_DIR="$HOME/.sdkman"
 ESRLABS_LICENSE_FILE=27000@flexnet-license-server.int.esrlabs.com
 echo "set completion-ignore-case On" >> $HOME/.inputrc
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+export AUTO_NOTIFY_THRESHOLD=20
+export AUTO_NOTIFY_TITLE="Hey! %command has just finished"
+export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
+AUTO_NOTIFY_IGNORE+=("nvim", "vim", "htop", "vtop", "cat", "bat", "git", "ssh")
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
