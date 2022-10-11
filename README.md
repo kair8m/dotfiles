@@ -1,3 +1,11 @@
+# Basic setup
+
+## Install sdkman
+```
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+```
+
 # dotfiles
 
 configuration files for different tools
