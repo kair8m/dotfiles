@@ -17,6 +17,7 @@ Plug 'tomasr/molokai'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rakr/vim-one'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
