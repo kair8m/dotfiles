@@ -1,21 +1,22 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'tomasiser/vim-code-dark'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chriskempson/base16-vim'
 " Plug 'terryma/vim-multiple-cursors'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'folke/lsp-colors.nvim'
+" Plug 'mattn/vim-lsp-settings'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tomasr/molokai'
+Plug 'Valloric/YouCompleteMe'
+Plug 'rakr/vim-one'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
@@ -43,7 +44,7 @@ syntax on
 filetype indent on
 filetype plugin indent on
 
-colorscheme molokai
+colorscheme dracula
 
 inoremap { {}<Esc>ha
 inoremap ( ()<Esc>ha
@@ -74,10 +75,12 @@ map <C-n> :NerdTreeProjectRoot<CR>
 map <C-p> :ProjectFiles<CR>
 map <C-f> :SearchInProject<CR>
 map <esc> :noh <CR>
-highlight link LspErrorText GruvboxRedSign " requires gruvbox
-highlight clear LspWarningLine
-let g:lsp_signs_enabled = 1         " enable signs
-let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+" highlight link LspErrorText GruvboxRedSign " requires gruvbox
+" highlight clear LspWarningLine
+" hi LspDiagnosticsVirtualTextError guifg=Red ctermfg=LightRed
+" let g:lsp_signs_enabled = 1         " enable signs
+" let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+" let g:lsp_highlight_references_enabled = 1
 
 set statusline=
 set statusline+=%#PmenuSel#
@@ -93,7 +96,9 @@ set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ 
 
-let g:lsp_highlight_references_enabled = 1
+packadd termdebug
+syntax enable
+
 let g:markdown_fenced_languages = [
 			\ 'vim',
 			\ 'help'
@@ -104,5 +109,12 @@ let g:molokai_original = 1
 let g:rehash256 = 1
 let g:gitgutter_highlight_lines = 1
 let g:gitgutter_async=0
+let g:termdebug_popup = 0
+let g:termdebug_wide = 163
+" Use homebrew's clangd
+let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
+let g:ycm_max_diagnostics_to_display = 1000
+
+" highlight LspDiagnosticsDefaultError guifg=#FF0000
 au FileType cpp setlocal formatexpr= formatprg=clang-format\ -style=file
 au FileType python setlocal formatprg=autopep8\ -
