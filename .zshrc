@@ -21,7 +21,6 @@ alias sc"=source ~/.zshrc"
 alias top=vtop
 alias htop=vtop
 alias rm=trash
-alias cat=bat
 alias vim=nvim
 alias edit=$EDITOR
 alias untar="tar -xvf"
@@ -33,6 +32,10 @@ export PATH="$PATH:$GOPATH/bin"
 
 if [[ $OSTYPE == 'darwin'* ]]; then
 	hidutil property --set 	'{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}' > /dev/null
+	alias cat=bat
+fi
+if [[ $OSTYPE == 'linux'* ]]; then
+	alias cat=batcat
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
