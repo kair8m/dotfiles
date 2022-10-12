@@ -16,7 +16,7 @@ sudo apt-get install -yy \
 	net-tools \
 	htop \
 	python3 \
-	python3-ip \
+	python3-pip \
 	nodejs \
 	npm \
 	docker.io \
@@ -35,7 +35,8 @@ sudo apt-get install -yy \
 	zsh-syntax-highlighting \
 	terminator \
 	powerline \
-	fonts-powerline
+	fonts-powerline \
+	guake
 
 sudo snap install chromium code
 
@@ -60,6 +61,7 @@ vim -u NONE -c "helptags  ${HOME}/.vim/pack/vendor/start/indentLine/doc" -c "q"
 
 
 #oh-my-zsh setup
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 mkdir -p ${HOME}/.oh-my-zsh/custom
 curl "https://raw.githubusercontent.com/kair8m/dotfiles/main/.zshrc" >> ${HOME}/.zshrc
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -69,4 +71,3 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${HOME}/powerle
 git clone https://github.com/MichaelAquilina/zsh-auto-notify.git $ZSH_CUSTOM/plugins/auto-notify
 git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf
 ${HOME}/.fzf/install
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
