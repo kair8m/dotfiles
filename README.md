@@ -6,6 +6,11 @@ curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 ```
 
+## Install basic tools, setup zsh...
+```
+sh -c "$(curl  https://raw.githubusercontent.com/kair8m/dotfiles/main/setup_linux.sh)"
+```
+
 # dotfiles
 
 configuration files for different tools
