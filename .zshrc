@@ -51,17 +51,33 @@ function _pip_completion {
 compctl -K _pip_completion /usr/local/opt/python@3.10/bin/python3.10 -m pip
 # pip zsh completion end
 
+#bat cli setup 
+
 function md-preview {
   pandoc "$1" | lynx -stdin
 }
 
 function fd {
-  proj_root=$(git rev-parse --show-toplevel 2> /dev/null)
   preview="git diff $@ --color=always -- {-1}"
+  proj_root=$(git rev-parse --show-toplevel 2> /dev/null)
   cd $proj_root
   git diff $@ --name-only | fzf -m --ansi --preview $preview
   cd -
 }
+
+function vimfzf {
+  proj_root=$(git rev-parse --show-toplevel 2> /dev/null)
+  cd $proj_root
+  nvim $(fzf --preview "$BATCOMMAND --color=always --style=numbers {-1}")
+  cd -
+}
+
+alias bathelp='bat --plain --language=help'
+help() {
+    "$@" --help 2>&1 | bathelp
+}
+
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 ESRLABS_LICENSE_FILE=27000@flexnet-license-server.int.esrlabs.com
 echo "set completion-ignore-case On" >> $HOME/.inputrc
