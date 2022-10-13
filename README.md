@@ -42,7 +42,7 @@ https://github.com/prompt-toolkit/ptpython #Cool python interpreter
 
 `Ctrl + f` find using content in project
 
-###NERD TREE guides
+##NERD TREE guides
 
 `m` - open dialogue
 
@@ -51,3 +51,9 @@ in dialogue
 `a` - create file or directory
 
 `d` - delete file or directory
+
+##Useful aliases
+```
+fd - shows git diff in fancy IDE-like way (just try it and see:))
+md-preview - preview markdown files
+```
