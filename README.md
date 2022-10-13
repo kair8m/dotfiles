@@ -42,6 +42,18 @@ https://github.com/prompt-toolkit/ptpython #Cool python interpreter
 
 `Ctrl + f` find using content in project
 
+`gd` go to declaration
+
+`gd` go to implementation
+
+`gy` go to type declaration
+
+`gr` show references
+
+`Ctrl+o' previous buffer
+
+`Ctrl+i` next buffer
+
 ## NERD TREE guides
 
 `m` - open dialogue
