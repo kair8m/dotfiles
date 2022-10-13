@@ -114,7 +114,7 @@ let g:gitgutter_async=0
 let g:termdebug_popup = 0
 let g:termdebug_wide = 163
 " Use homebrew's clangd
-let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
+let g:ycm_clangd_binary_path = '/usr/lib/clang'
 let g:ycm_max_diagnostics_to_display = 1000
 
 " highlight LspDiagnosticsDefaultError guifg=#FF0000
