@@ -1,6 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -10,12 +7,12 @@ plugins=(
 	git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+	zsh-fzf-history-search
 	web-search
 	auto-notify
 )
 
 export EDITOR=nvim
-export GOPATH="$HOME/go"
 alias py=python
 alias sc"=source ~/.zshrc"
 alias top=vtop
@@ -28,14 +25,16 @@ alias flashmate="java -jar $HOME/EDF/flashmate.jar"
 alias pack="tar -czvf"
 
 source $ZSH/oh-my-zsh.sh
-export PATH="$PATH:$GOPATH/bin"
 
 if [[ $OSTYPE == 'darwin'* ]]; then
+	# remap '~' key
 	hidutil property --set 	'{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}' > /dev/null
 	alias cat=bat
+	BATCOMMAND=bat
 fi
 if [[ $OSTYPE == 'linux'* ]]; then
 	alias cat=batcat
+	BATCOMMAND=batcat
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -56,20 +55,25 @@ function md-preview {
   pandoc "$1" | lynx -stdin
 }
 
-function batdiff {
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+function fd {
+  preview="git diff $@ --color=always -- {-1}"
+  git diff $@ --name-only | fzf -m --ansi --preview $preview
 }
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 ESRLABS_LICENSE_FILE=27000@flexnet-license-server.int.esrlabs.com
 echo "set completion-ignore-case On" >> $HOME/.inputrc
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 export AUTO_NOTIFY_THRESHOLD=20
 export AUTO_NOTIFY_TITLE="Hey! %command has just finished"
 export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
-AUTO_NOTIFY_IGNORE+=("nvim", "vim", "htop", "vtop", "cat", "bat", "git", "ssh")
+AUTO_NOTIFY_IGNORE+=("nvim", "vim", "htop", "vtop", "cat", "bat", "git", "ssh", "ptpython", "python", "node", "tail")
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source ${HOME}/powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+export PYTHONSTARTUP=${HOME}/.pythonrc
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
