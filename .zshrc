@@ -56,8 +56,11 @@ function md-preview {
 }
 
 function fd {
+  proj_root=$(git rev-parse --show-toplevel 2> /dev/null)
   preview="git diff $@ --color=always -- {-1}"
+  cd $proj_root
   git diff $@ --name-only | fzf -m --ansi --preview $preview
+  cd -
 }
 
 ESRLABS_LICENSE_FILE=27000@flexnet-license-server.int.esrlabs.com
@@ -66,7 +69,7 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 export AUTO_NOTIFY_THRESHOLD=20
 export AUTO_NOTIFY_TITLE="Hey! %command has just finished"
 export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
-AUTO_NOTIFY_IGNORE+=("nvim", "vim", "htop", "vtop", "cat", "bat", "git", "ssh", "ptpython", "python", "node", "tail")
+AUTO_NOTIFY_IGNORE+=("nvim", "vim", "htop", "vtop", "cat", "bat", "git", "ssh", "ptpython", "python", "node", "tail", "fd")
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
