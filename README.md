@@ -50,6 +50,8 @@ https://github.com/prompt-toolkit/ptpython #Cool python interpreter
 
 `gr` show references
 
+`Ctrl+r` refactor
+
 `Ctrl+o' previous buffer
 
 `Ctrl+i` next buffer

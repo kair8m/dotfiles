@@ -77,12 +77,6 @@ map <C-n> :NerdTreeProjectRoot<CR>
 map <C-p> :ProjectFiles<CR>
 map <C-f> :SearchInProject<CR>
 map <esc> :noh <CR>
-" highlight link LspErrorText GruvboxRedSign " requires gruvbox
-" highlight clear LspWarningLine
-" hi LspDiagnosticsVirtualTextError guifg=Red ctermfg=LightRed
-" let g:lsp_signs_enabled = 1         " enable signs
-" let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
-" let g:lsp_highlight_references_enabled = 1
 
 set statusline=
 set statusline+=%#PmenuSel#
@@ -176,7 +170,7 @@ let g:lsp_cxx_hl_use_text_props = 1
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <C-r> <Plug>(coc-refactor)
 
 " highlight LspDiagnosticsDefaultError guifg=#FF0000
 au FileType cpp setlocal formatexpr= formatprg=clang-format\ -style=file
