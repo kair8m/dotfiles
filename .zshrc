@@ -91,6 +91,7 @@ AUTO_NOTIFY_IGNORE+=("nvim", "vim", "htop", "vtop", "cat", "bat", "git", "ssh", 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ${HOME}/powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /etc/zsh_command_not_found
 export PYTHONSTARTUP=${HOME}/.pythonrc
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
