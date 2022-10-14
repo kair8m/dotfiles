@@ -4,23 +4,18 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chriskempson/base16-vim'
-" Plug 'terryma/vim-multiple-cursors'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'folke/lsp-colors.nvim'
-" Plug 'mattn/vim-lsp-settings'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tomasr/molokai'
-" Plug 'Valloric/YouCompleteMe'
 Plug 'rakr/vim-one'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 call plug#end()
 
@@ -169,7 +164,13 @@ function! ShowDocumentation()
   endif
 endfunction
 
-let g:coc_fzf_preview_fullscreen=1
+" let g:coc_fzf_preview_fullscreen=1
+" let g:coc_fzf_preview='up:50%'
+" let g:coc_fzf_opts=['--layout=reverse']
+let g:coc_fzf_preview = ''
+let g:coc_fzf_opts = []
+let g:coc_default_semantic_highlight_groups = 1
+let g:lsp_cxx_hl_use_text_props = 1
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
