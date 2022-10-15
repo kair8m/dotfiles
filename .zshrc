@@ -55,7 +55,7 @@ function md-preview {
 }
 
 function fd {
-  preview="git diff $@ -- {-1} | bat -ldiff --color=always --style=numbers"
+  preview="git diff -- {-1} | delta --file-style=omit --width=${FZF_PREVIEW_COLUMNS:-$COLUMNS}"
   proj_root=$(git rev-parse --show-toplevel 2> /dev/null)
   cd $proj_root
   git diff $@ --name-only | fzf -m --ansi --preview $preview
