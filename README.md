@@ -23,7 +23,8 @@ https://github.com/tpope/vim-commentary
 https://github.com/airblade/vim-gitgutter
 https://github.com/romkatv/powerlevel10k
 https://sdkman.io/
-https://github.com/prompt-toolkit/ptpython #Cool python interpreter
+https://github.com/prompt-toolkit/ptpython # Cool python interpreter
+https://github.com/dandavison/delta # Makes git diff fancy
 ```
 
 # Keyboard shortcuts
