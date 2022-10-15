@@ -23,18 +23,15 @@ alias edit=$EDITOR
 alias untar="tar -xvf"
 alias flashmate="java -jar $HOME/EDF/flashmate.jar"
 alias pack="tar -czvf"
+alias cat=bat
 
 source $ZSH/oh-my-zsh.sh
 
 if [[ $OSTYPE == 'darwin'* ]]; then
 	# remap '~' key
 	hidutil property --set 	'{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}' > /dev/null
-	alias cat=bat
-	BATCOMMAND=bat
 fi
 if [[ $OSTYPE == 'linux'* ]]; then
-	alias cat=batcat
-	BATCOMMAND=batcat
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -58,7 +55,7 @@ function md-preview {
 }
 
 function fd {
-  preview="git diff $@ --color=always -- {-1}"
+  preview="git diff $@ -- {-1} | bat -ldiff --color=always --style=numbers"
   proj_root=$(git rev-parse --show-toplevel 2> /dev/null)
   cd $proj_root
   git diff $@ --name-only | fzf -m --ansi --preview $preview
@@ -68,7 +65,7 @@ function fd {
 function vimfzf {
   proj_root=$(git rev-parse --show-toplevel 2> /dev/null)
   cd $proj_root
-  nvim $(fzf --preview "$BATCOMMAND --color=always --style=numbers {-1}")
+  nvim $(fzf --preview "bat --color=always --style=numbers {-1}")
   cd -
 }
 
