@@ -53,9 +53,13 @@ https://github.com/dandavison/delta # Makes git diff fancy
 
 `Ctrl+r` refactor
 
-`Ctrl+o' previous buffer
+`Ctrl+o` previous buffer
 
 `Ctrl+i` next buffer
+
+`Ctrl+t` toggle terminal
+
+`Alt+<Left/Right>Arrow` - navigate beetween tabs
 
 ## NERD TREE guides
 
