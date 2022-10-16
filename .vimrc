@@ -17,6 +17,9 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'petertriho/nvim-scrollbar'
+Plug 'declancm/cinnamon.nvim'
+Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}
 
 call plug#end()
 
@@ -79,8 +82,13 @@ set statusline+=\
 packadd termdebug
 syntax enable
 
+lua require("scrollbar").setup()
+lua require("cinnamon").setup()
+lua require("toggleterm").setup()
+
 let g:fzf_preview_window = 'right:50%'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
+let g:fzf_preivew_use_dev_icons = 1
 let g:rehash256 = 1
 " let g:gitgutter_highlight_lines = 1
 let g:gitgutter_async=0
@@ -171,3 +179,28 @@ au FileType python setlocal formatprg=autopep8\ -
 nnoremap <silent> <A-Right> <Cmd>BufferNext<CR>
 nnoremap <silent> <A-Left> <Cmd>BufferPrevious<CR>
 nnoremap <silent> <A-c> <Cmd>BufferClose<CR>
+command! BufOnly silent! call Preserve("exec '%bd|e#|bd#'")
+
+" preserve function
+if !exists('*Preserve')
+    function! Preserve(command)
+        try
+            let l:win_view = winsaveview()
+            "silent! keepjumps keeppatterns execute a:command
+            silent! execute 'keeppatterns keepjumps ' . a:command
+        finally
+            call winrestview(l:win_view)
+        endtry
+    endfunction
+endif
+nnoremap <silent> <A-t> <Cmd>BufOnly<CR>
+
+" set
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+" By applying the mappings this way you can pass a count to your
+" mapping to open a specific window.
+" For example: 2<C-t> will open terminal 2
+nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
