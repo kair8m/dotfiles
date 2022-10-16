@@ -6,16 +6,17 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chriskempson/base16-vim'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
 Plug 'junegunn/fzf.vim'
-Plug 'tomasr/molokai'
-Plug 'rakr/vim-one'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -31,12 +32,11 @@ set belloff=all
 set noswapfile
 set scrolloff=5
 set autoindent
-set paste
+set smartindent
 set cursorline
 set termguicolors
 set nocompatible
 set updatetime=300
-set smartindent
 set nowrap
 set is hls
 set clipboard=unnamedplus
@@ -48,21 +48,6 @@ filetype plugin indent on
 
 colorscheme dracula
 
-inoremap { {}<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap [ []<Esc>ha
-inoremap " ""<Esc>ha
-inoremap ' ''<Esc>ha
-inoremap ` ``<Esc>ha
-
-inoremap <expr> <bs> <sid>remove_pair()
-imap <c-h> <bs>
-
-function s:remove_pair() abort
-	let pair = getline('.')[ col('.')-2 : col('.')-1 ]
-	return stridx('""''''()[]<>{}', pair) % 2 == 0 ? "\<del>\<c-h>" : "\<bs>"
-endfunction
-
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
@@ -72,7 +57,6 @@ command! -bang -nargs=* SearchInProject
   \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
 command! NerdTreeProjectRoot execute 'NERDTreeToggle' s:find_git_root()
 
-inoremap " ""<c-g>U<left>
 map <C-n> :NerdTreeProjectRoot<CR>
 map <C-p> :ProjectFiles<CR>
 map <C-f> :SearchInProject<CR>
@@ -95,23 +79,19 @@ set statusline+=\
 packadd termdebug
 syntax enable
 
-let g:markdown_fenced_languages = [
-			\ 'vim',
-			\ 'help'
-			\]
 let g:fzf_preview_window = 'right:50%'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6  }  }
-let g:molokai_original = 1
 let g:rehash256 = 1
-let g:gitgutter_highlight_lines = 1
+" let g:gitgutter_highlight_lines = 1
 let g:gitgutter_async=0
 let g:termdebug_popup = 0
 let g:termdebug_wide = 163
-" Use homebrew's clangd
-let g:ycm_clangd_binary_path = '/usr/lib/clang'
-let g:ycm_max_diagnostics_to_display = 1000
 
-
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
@@ -135,6 +115,7 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -158,9 +139,6 @@ function! ShowDocumentation()
   endif
 endfunction
 
-" let g:coc_fzf_preview_fullscreen=1
-" let g:coc_fzf_preview='up:50%'
-" let g:coc_fzf_opts=['--layout=reverse']
 let g:coc_fzf_preview = ''
 let g:coc_fzf_opts = []
 let g:coc_default_semantic_highlight_groups = 1
@@ -171,7 +149,25 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <C-r> <Plug>(coc-refactor)
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " highlight LspDiagnosticsDefaultError guifg=#FF0000
 au FileType cpp setlocal formatexpr= formatprg=clang-format\ -style=file
 au FileType python setlocal formatprg=autopep8\ -
+
+nnoremap <silent> <A-Right> <Cmd>BufferNext<CR>
+nnoremap <silent> <A-Left> <Cmd>BufferPrevious<CR>
+nnoremap <silent> <A-c> <Cmd>BufferClose<CR>
