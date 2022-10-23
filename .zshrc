@@ -27,13 +27,6 @@ alias cat=bat
 
 source $ZSH/oh-my-zsh.sh
 
-if [[ $OSTYPE == 'darwin'* ]]; then
-	# remap '~' key
-	hidutil property --set 	'{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}' > /dev/null
-fi
-if [[ $OSTYPE == 'linux'* ]]; then
-fi
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # pip zsh completion start
@@ -47,6 +40,10 @@ function _pip_completion {
 }
 compctl -K _pip_completion /usr/local/opt/python@3.10/bin/python3.10 -m pip
 # pip zsh completion end
+export FZF_PREVIEW_PREVIEW_BAT_THEME="Dracula"
+export FZF_DEFAULT_COMMAND="fd --type f"
+export FZF_CTRL_T_COMMAND="fd --type f"
+export FZF_ALT_C_COMMAND="fd --type f"
 
 #bat cli setup 
 
@@ -54,7 +51,7 @@ function md-preview {
   pandoc "$1" | lynx -stdin
 }
 
-function fd {
+function fdiff {
   preview="git diff -- {-1} | delta --file-style=omit --width=${FZF_PREVIEW_COLUMNS:-$COLUMNS}"
   proj_root=$(git rev-parse --show-toplevel 2> /dev/null)
   cd $proj_root
@@ -90,7 +87,9 @@ source ${HOME}/powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /etc/zsh_command_not_found
 export PYTHONSTARTUP=${HOME}/.pythonrc
+export PATH="${HOME}/.config/lsp/lua-language-server/bin:${PATH}"
+-e 
+alias luamake=/luamake
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
