@@ -24,6 +24,7 @@ alias untar="tar -xvf"
 alias flashmate="java -jar $HOME/EDF/flashmate.jar"
 alias pack="tar -czvf"
 alias cat=bat
+alias lg=lazygit
 
 source $ZSH/oh-my-zsh.sh
 
