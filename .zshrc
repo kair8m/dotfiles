@@ -2,6 +2,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+source $HOME/.profile
+
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(
 	git
@@ -9,7 +11,6 @@ plugins=(
 	zsh-syntax-highlighting
 	zsh-fzf-history-search
 	web-search
-	auto-notify
 )
 
 export EDITOR=nvim
@@ -30,17 +31,6 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# pip zsh completion start
-function _pip_completion {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
-}
-compctl -K _pip_completion /usr/local/opt/python@3.10/bin/python3.10 -m pip
-# pip zsh completion end
 export FZF_PREVIEW_PREVIEW_BAT_THEME="Dracula"
 export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_CTRL_T_COMMAND="fd --type f"
@@ -74,13 +64,8 @@ help() {
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-ESRLABS_LICENSE_FILE=27000@flexnet-license-server.int.esrlabs.com
 echo "set completion-ignore-case On" >> $HOME/.inputrc
 source ~/powerlevel10k/powerlevel10k.zsh-theme
-export AUTO_NOTIFY_THRESHOLD=20
-export AUTO_NOTIFY_TITLE="Hey! %command has just finished"
-export AUTO_NOTIFY_BODY="It completed in %elapsed seconds with exit code %exit_code"
-AUTO_NOTIFY_IGNORE+=("nvim", "vim", "htop", "vtop", "cat", "bat", "git", "ssh", "ptpython", "python", "node", "tail", "fd")
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -88,9 +73,7 @@ source ${HOME}/powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /etc/zsh_command_not_found
 export PYTHONSTARTUP=${HOME}/.pythonrc
-export PATH="${HOME}/.config/lsp/lua-language-server/bin:${PATH}"
 -e 
-alias luamake=/luamake
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
