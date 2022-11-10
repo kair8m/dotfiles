@@ -1,5 +1,3 @@
-source $HOME/.profile
-
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(
     git
@@ -8,5 +6,7 @@ plugins=(
     zsh-fzf-history-search
     web-search
 )
+source $ZSH/oh-my-zsh.sh
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
+source $HOME/.profile
