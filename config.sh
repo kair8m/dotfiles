@@ -7,3 +7,4 @@ export FZF_ALT_C_COMMAND="fd -H --type f"
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export PYTHONSTARTUP=${HOME}/.pythonrc
+export GEM_HOME="$HOME/.gems"
