@@ -6,11 +6,10 @@ function cdfzf() {
         proj_root=$(pwd);
     fi;
     cd "$proj_root" || return
-    file=$(fd --type=d -print | fzf --preview "tree {} -L 1 -C" --bind "ctrl-j:down,ctrl-k:up,ctrl-h:preview-up,ctrl-l:preview-down,ctrl-q:abort")
-    if [ -z "$file" ]; then
+    dir=$(fd --type=d | fzf --preview "tree {} -L 1 -C" --bind "ctrl-j:down,ctrl-k:up,ctrl-h:preview-up,ctrl-l:preview-down,ctrl-q:abort")
+    if [ -z "$dir" ]; then
         cd - || return
         return
     fi;
-    nvim "$file"
-    cd - || return
+    cd "$dir" || exit
 }
