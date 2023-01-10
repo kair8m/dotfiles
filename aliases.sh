@@ -4,7 +4,6 @@ export EDITOR=nvim
 alias py=python
 alias sc="source $HOME/.zshrc"
 alias top=vtop
-alias htop=vtop
 alias vim=nvim
 alias edit="$EDITOR"
 alias untar="tar -xvf"
