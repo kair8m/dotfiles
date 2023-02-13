@@ -30,3 +30,6 @@ source $HOME/.config/dotfiles/cdfzf.sh
 source $HOME/.config/dotfiles/md-preview.sh
 source $HOME/.config/dotfiles/help.sh
 
+if hash zoxide 2>/dev/null; then
+    eval "$(zoxide init zsh)"
+fi
