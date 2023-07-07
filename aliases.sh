@@ -22,3 +22,4 @@ if hash lsd 2>/dev/null; then
     alias l="lsd -la --group-directories-first"
     alias lt="lsd -la --group-directories-first --tree"
 fi
+export VISUAL="$EDITOR"
