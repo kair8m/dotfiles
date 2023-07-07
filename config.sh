@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-export FZF_PREVIEW_PREVIEW_BAT_THEME="Dracula"
+export FZF_PREVIEW_PREVIEW_BAT_THEME="Catpuccin-frappe"
 export FZF_DEFAULT_COMMAND="fd -H --type f"
 export FZF_CTRL_T_COMMAND="fd -H --type f"
 export FZF_ALT_C_COMMAND="fd -H --type f"
-export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+--color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+--color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export PYTHONSTARTUP=${HOME}/.pythonrc
