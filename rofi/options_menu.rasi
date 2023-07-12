@@ -1,0 +1,74 @@
+configuration {
+    show-icons:                     false;
+    font:                           "Font Awesome 17";
+}
+
+
+@theme "catppuccin-frappe"
+
+window {
+    height:                         300;
+    width:                          240;
+    location:                       northeast;
+    anchor:                         northeast;
+    x-offset:                       -18;
+    y-offset:                       50;
+    transparency:                   "real";
+    background-color:               #00000000;
+    border:                         4px 4px solid 4px 4px;
+    border-radius:                  20;
+    border-color:                   @primary;
+}
+
+mainbox {
+    children:                       [message, listview];
+    padding:                        0px 0px;
+}
+
+
+textbox {
+    horizontal-align:   0.5;
+    border:             0px 0px 2px;
+    border-color:       @primary;
+    margin:             5px;
+    padding:            5px;
+}
+
+listview {
+    padding:                        3px 10px;
+}
+
+element {
+    padding:                        3px;
+    orientation:                    horizontal;
+}
+
+element normal.urgent, element alternate.urgent {
+    background-color:               @urgent;
+}
+
+element normal.active, element alternate.active {
+    background-color:               @background-alt;
+    border:                         4px 4px solid 4px 4px;
+    border-radius:                  8;
+    border-color:                   transparent;
+}
+
+element selected {
+    border:                         4px 4px solid 4px 4px;
+    border-radius:                  8;
+    border-color:                   @primary;
+}
+
+element selected.urgent {
+    background-color:               @urgent;
+}
+
+element selected.active {
+    background-color:               @background-alt;
+}
+
+element-text {
+    horizontal-align:               0;
+    padding:                        0px 3px;
+}
