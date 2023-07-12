@@ -124,7 +124,7 @@ assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|E
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
 
 # i3-gaps
 gaps inner 10
@@ -134,7 +134,10 @@ gaps top -4
 # i3-radius
 smart_borders on
 smart_borders no_gaps
-border_radius 10
+border_radius 30
+
+smart_gaps on
+smart_gaps inverse_outer
 
 # Hide borders
 # hide_edge_borders none
