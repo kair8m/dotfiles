@@ -1,0 +1,52 @@
+#!/bin/bash
+
+DIR=$(dirname $(realpath $0))
+
+LOCK="\tLock"
+LOGOUT="\tLogout"
+HIBERNATE="\tHibernate"
+REBOOT=" \tReboot"
+SHUTDOWN="\tShutdown"
+
+list_icons() {
+    echo -e "$LOCK"
+    echo -e "$LOGOUT"
+    echo -e "$HIBERNATE"
+    echo -e "$REBOOT"
+    echo -e "$SHUTDOWN"
+}
+
+handle_option() {
+    local opt=$(echo "$1" | awk '{print $2}')
+    case "$opt" in
+        "Lock")
+            $DIR/betterlockscreen -l blur
+            ;;
+        "Logout")
+            if $($DIR/rofi_confirm "$LOGOUT"); then
+                i3-msg exit
+            fi
+            ;;
+        "Hibernate")
+            if $($DIR/rofi_confirm "$HIBERNATE"); then
+                $DIR/hibernate
+            fi
+            ;;
+        "Reboot")
+            if $($DIR/rofi_confirm "$REBOOT"); then
+                reboot
+            fi
+            ;;
+        "Shutdown")
+            if $($DIR/rofi_confirm "$SHUTDOWN"); then
+                shutdown now
+            fi
+            ;;
+        *)
+            echo "Error"
+            ;;
+    esac
+}
+
+SELECTION="$(list_icons | rofi -dmenu -theme options_menu)"
+handle_option "$SELECTION"
