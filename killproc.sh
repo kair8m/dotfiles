@@ -10,3 +10,5 @@ function killproc() {
         --preview='echo {}' --preview-window=down,3,wrap \
         --layout=reverse --height=80% | awk '{print $2}' | xargs kill -9
 }
+
+bindkey -s "^P" 'killproc^M'

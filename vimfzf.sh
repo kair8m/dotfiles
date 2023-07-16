@@ -20,3 +20,5 @@ function vimfzf() {
     [[ $# -eq 0 ]] && root="$git_root" || root=$1
     __vimfzf_impl "$root"
 }
+
+bindkey -s "^E" 'vimfzf^M'
