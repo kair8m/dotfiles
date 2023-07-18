@@ -31,6 +31,7 @@ zinit light zsh-users/zsh-completions
 zinit light Aloxaf/fzf-tab
 zinit ice lucid nocompile
 zinit load MenkeTechnologies/zsh-cargo-completion
+zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
 
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -85,4 +86,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
