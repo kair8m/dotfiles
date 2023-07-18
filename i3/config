@@ -134,7 +134,7 @@ gaps top -4
 # i3-radius
 smart_borders on
 smart_borders no_gaps
-border_radius 30
+# border_radius 30
 
 smart_gaps on
 smart_gaps inverse_outer
