@@ -97,6 +97,9 @@ bindsym $super+Shift+7 move container to workspace number 7
 bindsym $super+Shift+8 move container to workspace number 8
 bindsym $super+Shift+9 move container to workspace number 9
 
+## Clipboard Screenshots
+bindsym $super+Shift+P exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $super+Shift+r restart
 
@@ -124,7 +127,7 @@ assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|E
 for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
 for_window [class=URxvt|Firefox|Geany|Evince|Soffice|libreoffice*|mpv|Ghb|Xfburn|Gimp*|Inkscape|Vlc|Lxappearance|Audacity] focus
 for_window [class=Xfburn|GParted|System-config-printer.py|Lxtask|Pavucontrol|Exo-helper*|Lxrandr|Arandr] focus
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 5
 
 # i3-gaps
 gaps inner 10
@@ -140,11 +143,11 @@ smart_gaps on
 smart_gaps inverse_outer
 
 # Hide borders
-# hide_edge_borders none
+hide_edge_borders none
 
 exec_always exec xset r rate 220 70
 exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:alt_shift_toggle"
 
 exec_always --no-startup-id $HOME/.config/i3/run_polybar.sh
 # Set background image
-exec_always --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/landscapes/yosemite.png
+exec_always --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/landscapes/evening-sky.png
