@@ -74,8 +74,6 @@ export NVM_DIR=~/.nvm
 if hash brew 2>/dev/null; then
     source $(brew --prefix nvm)/nvm.sh
 fi
-ulimit -n 200000
-ulimit -u 2048
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
