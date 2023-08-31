@@ -66,6 +66,10 @@ if hash zoxide 2>/dev/null; then
     eval "$(zoxide init zsh)"
 fi
 
+if hash gh 2>/dev/null; then
+    eval "$(gh completion -s zsh)"
+fi
+
 export NVM_DIR=~/.nvm
 if hash brew 2>/dev/null; then
     source $(brew --prefix nvm)/nvm.sh
