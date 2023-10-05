@@ -27,3 +27,5 @@
 [user]
 	name = Kair
 	email = kair8m@gmail.com\n
+[rebase]
+	autoStash = true
