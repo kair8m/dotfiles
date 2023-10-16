@@ -15,6 +15,7 @@ alias gs="git status"
 alias gc="git checkout"
 alias gs="git status"
 alias gl="git log"
+alias gitroot='cd $(git rev-parse --show-toplevel)'
 if hash lsd 2>/dev/null; then
     alias ls="lsd --group-directories-first"
     alias ll="lsd -l --group-directories-first"
