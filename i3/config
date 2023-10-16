@@ -151,3 +151,5 @@ exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:alt_sh
 exec_always --no-startup-id $HOME/.config/i3/run_polybar.sh
 # Set background image
 exec_always --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/landscapes/evening-sky.png
+exec_always --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+exec_always --no-startup-id compton -b --config ~/.config/i3/compton.conf
