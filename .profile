@@ -26,3 +26,8 @@ fi
 if [ -d "$HOME/anaconda3/bin/" ]; then
     PATH="$HOME/anaconda3/bin:$PATH"
 fi
+
+if [ -d "$HOME/.local/share/bob/nvim-bin" ]; then
+    PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
+fi
+
