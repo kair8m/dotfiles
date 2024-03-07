@@ -89,3 +89,12 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(bob complete zsh)"
+eval "$(gh completion -s zsh)"
+eval "$(op completion zsh)"
+# kitty
+bindkey "\e[1;3D" backward-word # ⌥←
+bindkey "\e[1;3C" forward-word # ⌥→
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
