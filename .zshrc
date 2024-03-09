@@ -92,7 +92,9 @@ unset __conda_setup
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 eval "$(bob complete zsh)"
 eval "$(gh completion -s zsh)"
-eval "$(op completion zsh)"
+if hash op 2>/dev/null; then
+    eval "$(op completion zsh)"
+fi
 # kitty
 bindkey "\e[1;3D" backward-word # ⌥←
 bindkey "\e[1;3C" forward-word # ⌥→
