@@ -14,6 +14,7 @@ export FZF_DEFAULT_OPTS=" \
 --bind 'ctrl-j:down,ctrl-d:page-down,ctrl-u:page-up,ctrl-k:up,ctrl-h:preview-up,ctrl-l:preview-down,ctrl-q:abort'"
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 export PYTHONSTARTUP=${HOME}/.pythonrc
 export GEM_HOME="$HOME/.gems"
 export RIM_HOME="$HOME/.rim"
