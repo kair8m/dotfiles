@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export FZF_PREVIEW_PREVIEW_BAT_THEME="Catpuccin-frappe"
+export FZF_PREVIEW_PREVIEW_BAT_THEME="Catppuccin-frappe"
 export FZF_DEFAULT_COMMAND="fd -H --type f"
 export FZF_CTRL_T_COMMAND="fd -H --type f"
 export FZF_ALT_C_COMMAND="fd -H --type f"
@@ -13,6 +13,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284 \
 --bind 'ctrl-j:down,ctrl-d:page-down,ctrl-u:page-up,ctrl-k:up,ctrl-h:preview-up,ctrl-l:preview-down,ctrl-q:abort'"
 
+export BAT_THEME="Catppuccin-frappe"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 export PYTHONSTARTUP=${HOME}/.pythonrc
