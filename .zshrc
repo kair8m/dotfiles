@@ -57,6 +57,7 @@ source $HOME/.config/dotfiles/fdiff.sh
 source $HOME/.config/dotfiles/cht.sh
 source $HOME/.config/dotfiles/vimfzf.sh
 source $HOME/.config/dotfiles/vimr.sh
+source $HOME/.config/dotfiles/vims.sh
 source $HOME/.config/dotfiles/cdfzf.sh
 source $HOME/.config/dotfiles/md-preview.sh
 source $HOME/.config/dotfiles/help.sh
