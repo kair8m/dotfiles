@@ -8,10 +8,10 @@ function __vimr_impl() {
 }
 
 function vimr() {
-    git_root=$(git rev-parse --show-toplevel 2> /dev/null)
+    git_root=$(git rev-parse --show-toplevel 2>/dev/null)
     if [ -z "$git_root" ]; then
-        git_root=$(pwd);
-    fi;
+        git_root=$(pwd)
+    fi
     [[ $# -eq 0 ]] && root="$git_root" || root=$1
     __vimr_impl "$root"
 }
