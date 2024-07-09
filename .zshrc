@@ -59,6 +59,7 @@ source $HOME/.config/dotfiles/vimfzf.sh
 source $HOME/.config/dotfiles/vimr.sh
 source $HOME/.config/dotfiles/vims.sh
 source $HOME/.config/dotfiles/cdfzf.sh
+source $HOME/.config/dotfiles/fzfdir-widget.sh
 source $HOME/.config/dotfiles/md-preview.sh
 source $HOME/.config/dotfiles/help.sh
 source $HOME/.config/dotfiles/killproc.sh
