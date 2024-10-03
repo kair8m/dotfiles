@@ -27,10 +27,17 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-zinit light zsh-users/zsh-completions
-zinit light Aloxaf/fzf-tab
 zinit ice lucid nocompile
 zinit load MenkeTechnologies/zsh-cargo-completion
+zinit light Aloxaf/fzf-tab
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
 
 
