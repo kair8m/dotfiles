@@ -1,5 +1,8 @@
+[include]
+	path = /Users/kairzhanmuldashev/.config/delta/catppuccin.gitconfig
 [core]
     pager = delta --syntax-theme Catppuccin-frappe
+    excludesfile = /Users/kairzhanmuldashev/.gitignore
 
 [interactive]
     diffFilter = delta --color-only --syntax-theme Catppuccin-frappe
@@ -11,6 +14,7 @@
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 	; side-by-side = true
 	line-numbers = true
+	features = catppuccin-frappe
 
 [merge]
     conflictstyle = diff3
@@ -25,7 +29,7 @@
 [pull]
 	rebase = true
 [user]
-	name = Kair
-	email = kair8m@gmail.com\n
+	name = Kairzhan Muldashev
+	email = kmuldashev@fyusion.com
 [rebase]
 	autoStash = true
