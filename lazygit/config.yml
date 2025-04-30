@@ -16,4 +16,4 @@ git:
   showIcons: true
   paging:
     colorArg: always
-    pager: delta --syntax-theme Catppuccin-frappe --paging=never --dark -s 
+    pager: delta --syntax-theme Catppuccin-frappe --paging=never -s 
