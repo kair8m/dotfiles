@@ -41,20 +41,9 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
 
 
-export ZSH="$HOME/.oh-my-zsh"
-plugins=(
-    git
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-fzf-history-search
-    web-search
-    fd
-    fzf
-)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export ZSH_THEME="powerlevel10k/powerlevel10k"
-[[ ! -f $ZSH/oh-my-zsh.sh ]] || source $ZSH/oh-my-zsh.sh
 
 source $HOME/.profile
 
@@ -79,31 +68,55 @@ if hash gh 2>/dev/null; then
     eval "$(gh completion -s zsh)"
 fi
 
-export NVM_DIR=~/.nvm
+
 if hash brew 2>/dev/null; then
     source $(brew --prefix nvm)/nvm.sh
 fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/anaconda3/bin:$PATH"
-    fi
+if hash bob 2>/dev/null; then
+    eval "$(bob complete zsh)"
 fi
-unset __conda_setup
-# <<< conda initialize <<<
+
+if hash gh 2>/dev/null; then
+    eval "$(gh completion -s zsh)"
+fi
+
+export NVM_DIR=~/.nvm
+
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-eval "$(bob complete zsh)"
-eval "$(gh completion -s zsh)"
-eval "$(op completion zsh)"
+# Set up fzf key bindings and fuzzy completion
+if hash fzf 2>/dev/null; then
+    source <(fzf --zsh)
+fi
+# eval "$(op completion zsh)"
 # kitty
 bindkey "\e[1;3D" backward-word # ⌥←
 bindkey "\e[1;3C" forward-word # ⌥→
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+bindkey -v
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+autoload -Uz select-bracketed select-quoted
+zle -N select-quoted
+zle -N select-bracketed
+for km in viopp visual; do
+  bindkey -M $km -- '-' vi-up-line-or-history
+  for c in {a,i}${(s..)^:-\'\"\`\|,./:;=+@}; do
+    bindkey -M $km $c select-quoted
+  done
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    bindkey -M $km $c select-bracketed
+  done
+done
+
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+bindkey -M vicmd cs change-surround
+bindkey -M vicmd ds delete-surround
+bindkey -M vicmd ys add-surround
+bindkey -M visual S add-surround
