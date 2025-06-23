@@ -29,7 +29,7 @@
 [pull]
 	rebase = true
 [user]
-	name = Kairzhan Muldashev
-	email = kmuldashev@fyusion.com
+	name = Kair
+	email = kair8m@gmail.com
 [rebase]
 	autoStash = true
